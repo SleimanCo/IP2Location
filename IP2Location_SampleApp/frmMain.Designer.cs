@@ -61,7 +61,7 @@
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(552, 211);
+            this.txtResult.Size = new System.Drawing.Size(720, 211);
             this.txtResult.TabIndex = 6;
             // 
             // txtIP
@@ -127,14 +127,14 @@
             this.txtPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPath.Location = new System.Drawing.Point(22, 37);
             this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(515, 23);
+            this.txtPath.Size = new System.Drawing.Size(683, 23);
             this.txtPath.TabIndex = 5;
             this.txtPath.Text = "C:\\Temp\\IP2Location\\IP2LOCATION-LITE-DB11.IPV6.BIN";
             // 
             // btnSelectPath
             // 
             this.btnSelectPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelectPath.Location = new System.Drawing.Point(543, 37);
+            this.btnSelectPath.Location = new System.Drawing.Point(711, 37);
             this.btnSelectPath.Name = "btnSelectPath";
             this.btnSelectPath.Size = new System.Drawing.Size(31, 23);
             this.btnSelectPath.TabIndex = 4;
@@ -162,7 +162,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 397);
+            this.ClientSize = new System.Drawing.Size(765, 397);
             this.Controls.Add(this.lblPath);
             this.Controls.Add(this.rbIPv6);
             this.Controls.Add(this.rbIPv4);
