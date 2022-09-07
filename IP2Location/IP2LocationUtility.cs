@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.IO.MemoryMappedFiles;
 using System.Linq;
@@ -16,10 +17,10 @@ using System.Text.RegularExpressions;
 
 namespace IP2Location
 {
-    public sealed class Component
+    public sealed class IP2LocationUtility
     {
         private readonly object _LockLoadBIN = new object();
-        private MetaData _MetaData = null;
+        private IP2LocationMetaData _MetaData = null;
         private MemoryMappedFile _MMF = null;
         private readonly int[,] _IndexArrayIPv4 = new int[65536, 2];
         private readonly int[,] _IndexArrayIPv6 = new int[65536, 2];
@@ -306,9 +307,9 @@ namespace IP2Location
                             _ = _Filestream.Seek(0L, SeekOrigin.Begin);
                             _ = _Filestream.Read(row, 0, len);
 
-                            _MetaData = new MetaData();
+                            _MetaData = new IP2LocationMetaData();
                             {
-                                ref MetaData withBlock = ref _MetaData;
+                                ref IP2LocationMetaData withBlock = ref _MetaData;
                                 withBlock.DBType = Read8FromHeader(ref row, 0);
                                 withBlock.DBColumn = Read8FromHeader(ref row, 1);
                                 withBlock.DBYear = Read8FromHeader(ref row, 2);
@@ -458,9 +459,9 @@ namespace IP2Location
         }
 
         // Description: Query database to get location information by IP address
-        public IPResult IPQuery(string myIPAddress)
+        public IP2LocationResult IPQuery(string myIPAddress)
         {
-            IPResult obj = new IPResult();
+            IP2LocationResult obj = new IP2LocationResult();
             string strIP;
             int myIPType = 0;
             int myBaseAddr = 0;
@@ -882,12 +883,12 @@ namespace IP2Location
         }
 
         // Description: Initialize
-        public Component()
+        public IP2LocationUtility()
         {
         }
 
         // Description: Remove memory accessors
-        ~Component()
+        ~IP2LocationUtility()
         {
             DestroyAccessors();
         }
@@ -1092,5 +1093,30 @@ namespace IP2Location
                 return 0;
             }
         }
+    }
+
+    internal class IP2LocationMetaData
+    {
+        public int BaseAddr { get; set; } = 0;
+        public int DBCount { get; set; } = 0;
+        public int DBColumn { get; set; } = 0;
+        public int DBType { get; set; } = 0;
+        public int DBDay { get; set; } = 1;
+        public int DBMonth { get; set; } = 1;
+        public int DBYear { get; set; } = 1;
+        public int BaseAddrIPv6 { get; set; } = 0;
+        public int DBCountIPv6 { get; set; } = 0;
+        public string IPVersion =>
+            DBYear.ToString(CultureInfo.CurrentCulture) + "." +
+            DBMonth.ToString(CultureInfo.CurrentCulture) + "." +
+            DBDay.ToString(CultureInfo.CurrentCulture);
+        public bool OldBIN { get; set; } = false;
+        public bool Indexed { get; set; } = false;
+        public bool IndexedIPv6 { get; set; } = false;
+        public int IndexBaseAddr { get; set; } = 0;
+        public int IndexBaseAddrIPv6 { get; set; } = 0;
+        public int ProductCode { get; set; } = 0;
+        public int ProductType { get; set; } = 0;
+        public int FileSize { get; set; } = 0;
     }
 }

@@ -61,6 +61,7 @@
             this.txtResult.Location = new System.Drawing.Point(22, 97);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
+            this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtResult.Size = new System.Drawing.Size(552, 218);
             this.txtResult.TabIndex = 6;
             // 
@@ -68,18 +69,19 @@
             // 
             this.txtIP.Location = new System.Drawing.Point(22, 40);
             this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(150, 20);
+            this.txtIP.Size = new System.Drawing.Size(289, 20);
             this.txtIP.TabIndex = 5;
-            this.txtIP.Text = "8.8.8.8";
+            this.txtIP.Text = "2a00:1851:8018:53a4:d076:f1ff:fe70:7805";
             // 
             // btnCheck
             // 
-            this.btnCheck.Location = new System.Drawing.Point(178, 38);
+            this.btnCheck.Location = new System.Drawing.Point(317, 38);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(75, 23);
             this.btnCheck.TabIndex = 4;
             this.btnCheck.Text = "Check";
             this.btnCheck.UseVisualStyleBackColor = true;
+            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
             // frmMain
             // 

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Numerics;
 using System.Text.RegularExpressions;
 
@@ -28,15 +29,10 @@ namespace IP2Location
                 {
                     switch (address.AddressFamily)
                     {
-                        case System.Net.Sockets.AddressFamily.InterNetwork:
-                            {
-                                return true;
-                            }
-
+                        case AddressFamily.InterNetwork:
+                            return true;
                         default:
-                            {
-                                return false;
-                            }
+                            return false;
                     }
                 }
                 else
@@ -60,15 +56,11 @@ namespace IP2Location
                 {
                     switch (address.AddressFamily)
                     {
-                        case System.Net.Sockets.AddressFamily.InterNetworkV6:
-                            {
-                                return true;
-                            }
+                        case AddressFamily.InterNetworkV6:
+                            return true;
 
                         default:
-                            {
-                                return false;
-                            }
+                            return false;
                     }
                 }
                 else
