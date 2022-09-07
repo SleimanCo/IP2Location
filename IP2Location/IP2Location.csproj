@@ -48,9 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IP2LocationUtility.cs" />
-    <Compile Include="IP2LocationWebService.cs" />
-    <Compile Include="IPTools.cs" />
     <Compile Include="IP2LocationResult.cs" />
+    <Compile Include="IP2LocationWeb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

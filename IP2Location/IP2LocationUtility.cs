@@ -19,6 +19,7 @@ namespace IP2Location
 {
     public sealed class IP2LocationUtility
     {
+        #region Variables
         private readonly object _LockLoadBIN = new object();
         private IP2LocationMetaData _MetaData = null;
         private MemoryMappedFile _MMF = null;
@@ -147,14 +148,21 @@ namespace IP2Location
 
         // Description: Set/Get the value of license key path (DEPRECATED)
         public string IPLicensePath { get; set; }
+        #endregion Variables
+
+        #region Methods
+        // Description: Initialize
+        public IP2LocationUtility()
+        {
+        }
 
         // Description: Set the parameters and perform BIN pre-loading
-        public void Open(string DBPath, bool UseMMF = false)
+        public bool Open(string DBPath, bool UseMMF = false)
         {
             IPDatabasePath = DBPath;
             UseMemoryMappedFile = UseMMF;
 
-            _ = LoadBIN();
+            return LoadBIN();
         }
 
         // Description: Create memory mapped file
@@ -230,16 +238,6 @@ namespace IP2Location
             }
         }
 
-        // Description: Destroy memory mapped file
-        private void DestroyMemoryMappedFile()
-        {
-            if (_MMF != null)
-            {
-                _MMF.Dispose();
-                _MMF = null;
-            }
-        }
-
         // Description: Create memory accessors
         private void CreateAccessors()
         {
@@ -264,28 +262,6 @@ namespace IP2Location
             if (_MapDataAccessor == null)
             {
                 _MapDataAccessor = _MMF.CreateViewAccessor(_MapDataOffset, 0L, MemoryMappedFileAccess.Read); // read from offset till EOF
-            }
-        }
-
-        // Description: Destroy memory accessors
-        private void DestroyAccessors()
-        {
-            if (_IPv4Accessor != null)
-            {
-                _IPv4Accessor.Dispose();
-                _IPv4Accessor = null;
-            }
-
-            if (_IPv6Accessor != null)
-            {
-                _IPv6Accessor.Dispose();
-                _IPv6Accessor = null;
-            }
-
-            if (_MapDataAccessor != null)
-            {
-                _MapDataAccessor.Dispose();
-                _MapDataAccessor = null;
             }
         }
 
@@ -441,25 +417,8 @@ namespace IP2Location
             return loadOK;
         }
 
-        // Description: Make sure the component is registered (DEPRECATED)
-        public bool IsRegistered()
-        {
-            return true;
-        }
-
-        // Description: Reverse the bytes if system is little endian
-        private void LittleEndian(ref byte[] byteArr)
-        {
-            if (BitConverter.IsLittleEndian)
-            {
-                List<byte> byteList = new List<byte>(byteArr);
-                byteList.Reverse();
-                byteArr = byteList.ToArray();
-            }
-        }
-
         // Description: Query database to get location information by IP address
-        public IP2LocationResult IPQuery(string myIPAddress)
+        public IP2LocationResult IPQuery(string ipAddress)
         {
             IP2LocationResult obj = new IP2LocationResult();
             string strIP;
@@ -487,16 +446,16 @@ namespace IP2Location
 
             try
             {
-                if (string.IsNullOrEmpty(myIPAddress) || myIPAddress == null)
+                if (string.IsNullOrEmpty(ipAddress) || ipAddress == null)
                 {
                     obj.Status = "EMPTY_IP_ADDRESS";
                     return obj;
                 }
 
-                strIP = VerifyIP(myIPAddress, ref myIPType, ref ipnum);
+                strIP = VerifyIP(ipAddress, ref myIPType, ref ipnum);
                 if (strIP != "Invalid IP")
                 {
-                    myIPAddress = strIP;
+                    ipAddress = strIP;
                 }
                 else
                 {
@@ -697,7 +656,7 @@ namespace IP2Location
                         if (CATEGORY_ENABLED)
                             category = ReadStr((long)Read32FromRow(ref row, CATEGORY_POSITION_OFFSET), ref myFilestream);
 
-                        obj.IPAddress = myIPAddress;
+                        obj.IPAddress = ipAddress;
                         obj.IPNumber = ipnum.ToString();
                         obj.CountryShort = country_short;
                         obj.CountryLong = country_long;
@@ -880,32 +839,6 @@ namespace IP2Location
             byte[] _Byte = new byte[4];
             Array.Copy(row, byteOffset, _Byte, 0, 4);
             return BitConverter.ToSingle(_Byte, 0);
-        }
-
-        // Description: Initialize
-        public IP2LocationUtility()
-        {
-        }
-
-        // Description: Remove memory accessors
-        ~IP2LocationUtility()
-        {
-            DestroyAccessors();
-        }
-
-        // Description: Destroy memory accessors & memory mapped file (only use in specific cases, otherwise don't use)
-        public void Close()
-        {
-            try
-            {
-                _MetaData = null;
-                DestroyAccessors();
-                DestroyMemoryMappedFile();
-            }
-            catch (Exception)
-            {
-                // do nothing
-            }
         }
 
         // Description: Validate the IP address input
@@ -1093,6 +1026,71 @@ namespace IP2Location
                 return 0;
             }
         }
+
+        // Description: Reverse the bytes if system is little endian
+        private void LittleEndian(ref byte[] byteArr)
+        {
+            if (BitConverter.IsLittleEndian)
+            {
+                List<byte> byteList = new List<byte>(byteArr);
+                byteList.Reverse();
+                byteArr = byteList.ToArray();
+            }
+        }
+
+        // Description: Destroy memory accessors
+        private void DestroyAccessors()
+        {
+            if (_IPv4Accessor != null)
+            {
+                _IPv4Accessor.Dispose();
+                _IPv4Accessor = null;
+            }
+
+            if (_IPv6Accessor != null)
+            {
+                _IPv6Accessor.Dispose();
+                _IPv6Accessor = null;
+            }
+
+            if (_MapDataAccessor != null)
+            {
+                _MapDataAccessor.Dispose();
+                _MapDataAccessor = null;
+            }
+        }
+
+        // Description: Destroy memory mapped file
+        private void DestroyMemoryMappedFile()
+        {
+            if (_MMF != null)
+            {
+                _MMF.Dispose();
+                _MMF = null;
+            }
+        }
+
+        // Description: Destroy memory accessors & memory mapped file (only use in specific cases, otherwise don't use)
+        public void Close()
+        {
+            try
+            {
+                _MetaData = null;
+                DestroyAccessors();
+                DestroyMemoryMappedFile();
+            }
+            catch (Exception)
+            {
+                // do nothing
+            }
+        }
+
+        // Description: Remove memory accessors
+        ~IP2LocationUtility()
+        {
+            DestroyAccessors();
+        }
+        #endregion Methods
     }
 
     internal class IP2LocationMetaData

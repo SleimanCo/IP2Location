@@ -18,13 +18,13 @@ namespace IP2Location
         public float Longitude { get; set; } = 0.0f;
         public string ZipCode { get; set; } = string.Empty;
         public string TimeZone { get; set; } = string.Empty;
+        public string InternetServiceProvider { get; set; } = string.Empty;
+        public string DomainName { get; set; } = string.Empty;
         public string NetSpeed { get; set; } = string.Empty;
         public string IDDCode { get; set; } = string.Empty;
         public string AreaCode { get; set; } = string.Empty;
         public string WeatherStationCode { get; set; } = string.Empty;
         public string WeatherStationName { get; set; } = string.Empty;
-        public string InternetServiceProvider { get; set; } = string.Empty;
-        public string DomainName { get; set; } = string.Empty;
         public string MCC { get; set; } = string.Empty;
         public string MNC { get; set; } = string.Empty;
         public string MobileBrand { get; set; } = string.Empty;

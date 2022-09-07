@@ -15,17 +15,20 @@ using Newtonsoft.Json.Linq;
 namespace IP2Location
 {
 
-    public sealed class ComponentWebService
+    public sealed class IP2LocationWeb
     {
+        #region Variables
         private string _APIKey = "";
         private string _Package = "";
         private bool _UseSSL = true;
         private readonly Regex _RegexAPIKey = new Regex(@"^[\dA-Z]{10}$");
         private readonly Regex _RegexPackage = new Regex(@"^WS\d+$");
         private const string BASE_URL = "api.ip2location.com/v2/";
+        #endregion Variables
 
+        #region Methods
         // Description: Initialize
-        public ComponentWebService()
+        public IP2LocationWeb()
         {
         }
 
@@ -50,21 +53,21 @@ namespace IP2Location
         }
 
         // Description: Query web service to get location information by IP address and translations
-        public JObject IPQuery(string IP, string Language = "en")
+        public JObject IPQuery(string ipAddress, string Language = "en")
         {
-            return IPQuery(IP, null, Language);
+            return IPQuery(ipAddress, null, Language);
         }
 
         // Description: Query web service to get location information by IP address, addons and translations
-        public JObject IPQuery(string IP, string[] AddOns, string Language = "en")
+        public JObject IPQuery(string ipAddress, string[] addOns, string Language = "en")
         {
             CheckParams(); // check here in case user haven't called Open yet
 
             string url;
             string protocol = _UseSSL ? "https" : "http";
-            url = protocol + "://" + BASE_URL + "?key=" + _APIKey + "&package=" + _Package + "&ip=" + System.Net.WebUtility.UrlEncode(IP) + "&lang=" + System.Net.WebUtility.UrlEncode(Language);
-            if (AddOns != null)
-                url += "&addon=" + System.Net.WebUtility.UrlEncode(string.Join(",", AddOns));
+            url = protocol + "://" + BASE_URL + "?key=" + _APIKey + "&package=" + _Package + "&ip=" + System.Net.WebUtility.UrlEncode(ipAddress) + "&lang=" + System.Net.WebUtility.UrlEncode(Language);
+            if (addOns != null)
+                url += "&addon=" + System.Net.WebUtility.UrlEncode(string.Join(",", addOns));
             string rawjson = GetMethod(url);
             object results = JsonConvert.DeserializeObject<object>(rawjson);
 
@@ -128,5 +131,6 @@ namespace IP2Location
                 return "Failed : HTTP error code :" + ((int)response.StatusCode).ToString();
             }
         }
+        #endregion Methods
     }
 }
