@@ -31,13 +31,14 @@
             this.lblResult = new System.Windows.Forms.Label();
             this.txtResult = new System.Windows.Forms.TextBox();
             this.txtIP = new System.Windows.Forms.TextBox();
-            this.btnGetIPInfo = new System.Windows.Forms.Button();
+            this.btnGetIPInfoToTextBox = new System.Windows.Forms.Button();
             this.rbIPv4 = new System.Windows.Forms.RadioButton();
             this.rbIPv6 = new System.Windows.Forms.RadioButton();
             this.lblPath = new System.Windows.Forms.Label();
             this.txtPath = new System.Windows.Forms.TextBox();
             this.btnSelectPath = new System.Windows.Forms.Button();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
+            this.btnGetIPInfoToConsole = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblResult
@@ -68,20 +69,20 @@
             this.txtIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIP.Location = new System.Drawing.Point(22, 105);
             this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(350, 23);
+            this.txtIP.Size = new System.Drawing.Size(358, 23);
             this.txtIP.TabIndex = 5;
             this.txtIP.Text = "188.70.11.199";
             // 
-            // btnGetIPInfo
+            // btnGetIPInfoToTextBox
             // 
-            this.btnGetIPInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetIPInfo.Location = new System.Drawing.Point(378, 78);
-            this.btnGetIPInfo.Name = "btnGetIPInfo";
-            this.btnGetIPInfo.Size = new System.Drawing.Size(100, 50);
-            this.btnGetIPInfo.TabIndex = 4;
-            this.btnGetIPInfo.Text = "Get IP Info";
-            this.btnGetIPInfo.UseVisualStyleBackColor = true;
-            this.btnGetIPInfo.Click += new System.EventHandler(this.btnGetIPInfo_Click);
+            this.btnGetIPInfoToTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetIPInfoToTextBox.Location = new System.Drawing.Point(386, 78);
+            this.btnGetIPInfoToTextBox.Name = "btnGetIPInfoToTextBox";
+            this.btnGetIPInfoToTextBox.Size = new System.Drawing.Size(91, 50);
+            this.btnGetIPInfoToTextBox.TabIndex = 4;
+            this.btnGetIPInfoToTextBox.Text = "Get IP Info to TextBox";
+            this.btnGetIPInfoToTextBox.UseVisualStyleBackColor = true;
+            this.btnGetIPInfoToTextBox.Click += new System.EventHandler(this.btnGetIPInfoToTextBox_Click);
             // 
             // rbIPv4
             // 
@@ -146,6 +147,17 @@
             this.ofd.DefaultExt = "BIN";
             this.ofd.Filter = "Bin Files|*.bin";
             // 
+            // btnGetIPInfoToConsole
+            // 
+            this.btnGetIPInfoToConsole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetIPInfoToConsole.Location = new System.Drawing.Point(483, 78);
+            this.btnGetIPInfoToConsole.Name = "btnGetIPInfoToConsole";
+            this.btnGetIPInfoToConsole.Size = new System.Drawing.Size(91, 50);
+            this.btnGetIPInfoToConsole.TabIndex = 4;
+            this.btnGetIPInfoToConsole.Text = "Get IP Info to Console";
+            this.btnGetIPInfoToConsole.UseVisualStyleBackColor = true;
+            this.btnGetIPInfoToConsole.Click += new System.EventHandler(this.btnGetIPInfoToConsole_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -159,7 +171,8 @@
             this.Controls.Add(this.txtPath);
             this.Controls.Add(this.txtIP);
             this.Controls.Add(this.btnSelectPath);
-            this.Controls.Add(this.btnGetIPInfo);
+            this.Controls.Add(this.btnGetIPInfoToConsole);
+            this.Controls.Add(this.btnGetIPInfoToTextBox);
             this.Name = "frmMain";
             this.Text = "IP2Location - Sample Tool";
             this.ResumeLayout(false);
@@ -172,13 +185,14 @@
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.TextBox txtIP;
-        private System.Windows.Forms.Button btnGetIPInfo;
+        private System.Windows.Forms.Button btnGetIPInfoToTextBox;
         private System.Windows.Forms.RadioButton rbIPv4;
         private System.Windows.Forms.RadioButton rbIPv6;
         private System.Windows.Forms.Label lblPath;
         private System.Windows.Forms.TextBox txtPath;
         private System.Windows.Forms.Button btnSelectPath;
         private System.Windows.Forms.OpenFileDialog ofd;
+        private System.Windows.Forms.Button btnGetIPInfoToConsole;
     }
 }
 
