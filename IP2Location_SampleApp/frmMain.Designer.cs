@@ -175,6 +175,7 @@
             this.Controls.Add(this.btnGetIPInfoToTextBox);
             this.Name = "frmMain";
             this.Text = "IP2Location - Sample Tool";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

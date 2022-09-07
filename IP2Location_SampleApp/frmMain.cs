@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -199,6 +200,12 @@ namespace IP2Location_SampleApp
             {
                 ip2LocationUtility.Close();
             }
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            string strExecPath = Path.GetDirectoryName(Application.ExecutablePath);
+            txtPath.Text = strExecPath + @"\Data\IP2LOCATION-LITE-DB11.BIN";
         }
     }
 }

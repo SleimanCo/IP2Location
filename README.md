@@ -9,9 +9,11 @@ The retured info will include some or all of these types: ISO3166 Country Code, 
 
 ## How to use IP2Location
 ### 1. Download a BIN file
-To use this utility, first download a BIN data file from: 
+To use this utility, you may download a BIN data file from: 
 * Free IP2Location IP Geolocation BIN Data: https://lite.ip2location.com
 * Commercial IP2Location IP Geolocation BIN Data: https://www.ip2location.com/database/ip2location
+
+Or you may use the included LITE BIN Data file in the "Data" folder in Sample App project.
 
 As an alternative, this geolocation component can also call the IP2Location Web Service. This requires an API key. If you don't have an existing API key, you can subscribe for one at the below:
 https://www.ip2location.com/web-service/ip2location
