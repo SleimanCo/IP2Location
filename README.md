@@ -16,10 +16,10 @@ To use this utility, first download a BIN data file from:
 As an alternative, this geolocation component can also call the IP2Location Web Service. This requires an API key. If you don't have an existing API key, you can subscribe for one at the below:
 https://www.ip2location.com/web-service/ip2location
 
-## 2. Integrate this Class Library
+### 2. Integrate this Class Library
 It can be easily integrated into any .NET project by referencing the DLL file, or by adding the class library project into your solution and referencing it, or by simply copying the class files to your project.
 
-## 3. Example C# Code
+### 3. Example C# Code
 ```cs
 IP2LocationUtility ip2LocationUtility = new IP2LocationUtility();
 IP2LocationResult ip2LocationResult;
