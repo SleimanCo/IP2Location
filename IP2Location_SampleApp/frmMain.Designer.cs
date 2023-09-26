@@ -129,7 +129,7 @@
             this.txtPath.Name = "txtPath";
             this.txtPath.Size = new System.Drawing.Size(683, 23);
             this.txtPath.TabIndex = 5;
-            this.txtPath.Text = "C:\\Temp\\IP2Location\\IP2LOCATION-LITE-DB11.IPV6.BIN";
+            this.txtPath.Text = "\\Data\\IP2LOCATION-LITE-DB1.IPV6.BIN";
             // 
             // btnSelectPath
             // 

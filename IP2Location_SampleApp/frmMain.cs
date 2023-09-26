@@ -205,7 +205,7 @@ namespace IP2Location_SampleApp
         private void frmMain_Load(object sender, EventArgs e)
         {
             string strExecPath = Path.GetDirectoryName(Application.ExecutablePath);
-            txtPath.Text = strExecPath + @"\Data\IP2LOCATION-LITE-DB11.BIN";
+            txtPath.Text = strExecPath + @"\Data\IP2LOCATION-LITE-DB1.IPV6.BIN";
         }
     }
 }
