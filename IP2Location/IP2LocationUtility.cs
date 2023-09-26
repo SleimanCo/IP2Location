@@ -658,10 +658,10 @@ namespace IP2Location
 
                         obj.IPAddress = ipAddress;
                         obj.IPNumber = ipnum.ToString();
-                        obj.CountryShort = country_short;
-                        obj.CountryLong = country_long;
-                        obj.Region = region;
-                        obj.City = city;
+                        obj.CountryCode = country_short;
+                        obj.CountryName = country_long;
+                        obj.RegionName = region;
+                        obj.CityName = city;
                         obj.InternetServiceProvider = isp;
                         obj.DomainName = domain;
                         obj.ZipCode = zipcode;
@@ -679,7 +679,7 @@ namespace IP2Location
                         obj.Elevation = elevation;
                         obj.UsageType = usagetype;
                         obj.AddressType = addresstype;
-                        obj.Category = category;
+                        obj.AdsCategory = category;
                         obj.Status = MSG_OK;
 
                         return obj;

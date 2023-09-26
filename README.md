@@ -16,7 +16,7 @@ To use this utility, you may download a BIN data file from:
 Or you may use the included LITE BIN Data file in the "Data" folder in Sample App project.
 
 As an alternative, this geolocation component can also call the IP2Location Web Service. This requires an API key. If you don't have an existing API key, you can subscribe for one at the below:
-https://www.ip2location.com/web-service/ip2location
+https://www.ip2location.io/pricing
 
 ### 2. Integrate this Class Library
 It can be easily integrated into any .NET project by referencing the DLL file, or by adding the class library project into your solution and referencing it, or by simply copying the class files to your project.
