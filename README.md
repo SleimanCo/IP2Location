@@ -1,7 +1,7 @@
 # IP2Location
 A utility to get the geo location info about an IP Address. 
 
-IP2Location™ is a non-intrusive IP location lookup technology that retrieves geolocation information with no explicit permission required from users. All you need is your client’s IP address in IPv4 or IPv6 format.
+IP2Locationâ„¢ is a non-intrusive IP location lookup technology that retrieves geolocation information with no explicit permission required from users. All you need is your clientâ€™s IP address in IPv4 or IPv6 format.
 
 ## What Types of Geo Info to be Returned
 The retured info will include some or all of these types: ISO3166 Country Code, Country Name, Region/State, City, Latitude and Longitude, ZIP/Postal Code, Time Zone, Connection Speed, ISP, Domain Name, IDD Country Code, Area Code, Weather Station Data, Mobile Network Codes (MNC), Mobile Country Codes (MCC), Mobile Carrier, Elevation, Usage Type, Address Type, and Advertising Category.
@@ -100,3 +100,8 @@ finally
     ip2LocationUtility.Close();
 }
 ```
+
+## Screenshots taken from the Sample App
+![Alt text](https://raw.githubusercontent.com/SleimanCo/IP2Location/main/SS01.png "Screenshot 1")
+![Alt text](https://raw.githubusercontent.com/SleimanCo/IP2Location/main/SS02.png "Screenshot 2")
+![Alt text](https://raw.githubusercontent.com/SleimanCo/IP2Location/main/SS03.png "Screenshot 3")
