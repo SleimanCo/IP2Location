@@ -11,6 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
+		SS01.png = SS01.png
+		SS02.png = SS02.png
+		SS03.png = SS03.png
 	EndProjectSection
 EndProject
 Global
